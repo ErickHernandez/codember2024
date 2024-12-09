@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { text } = require('stream/consumers');
 
 analizarInstrucciones("trace.txt");
 
@@ -9,7 +8,6 @@ function analizarInstrucciones(archivoTrace) {
     let secuenciaActual = 0;
 
     const data = leerArchivo(archivoTrace).split('\n');
-    //const data = ["0 1 2 3 -1", "1 -2 5"];
 
     for (let i = 0; i < data.length; i++) {
         secuenciaActual = data[i].split(' ');
@@ -24,10 +22,10 @@ function analizarInstrucciones(archivoTrace) {
         for (let j = 0; j >= 0 && j < secuenciaActual.length;) {
             let instruccion = parseInt(secuenciaActual[j]);
 
-            secuenciaActual[j] = instruccion + 1 + ''; //aumentar valor de posicion actual
+            secuenciaActual[j] = instruccion + 1 + '';
 
-            j += instruccion; //mover puntero
-            contadorUltimaLinea++; //aumentar conteo
+            j += instruccion;
+            contadorUltimaLinea++;
         }
 
         contadorInstrucciones += contadorUltimaLinea;
